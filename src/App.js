@@ -9,7 +9,7 @@ const customers = [{
   
   
   'name' : '이진석',
-  'birthday' : '891208',
+  'birthday' : '691208',
   'gender' : '남자',
   'job' : '대학생'
 },

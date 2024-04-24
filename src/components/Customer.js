@@ -24,6 +24,7 @@ class CustomerProfile extends React.Component{
     }
 }
 
+
 class CustomerInfo extends React.Component{
     render (){
         return(
@@ -35,6 +36,9 @@ class CustomerInfo extends React.Component{
         )
     }
 }
+
+
+
 
 
 
