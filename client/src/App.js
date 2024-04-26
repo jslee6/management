@@ -11,49 +11,40 @@ import TableCell from '@mui/material/TableCell';
 
 
 
-const styles = {
-  root: {
-  width: "100%",
-  overflowX: "auto"
-  },
-  table: {
-  minWidth: 1080
-  }
-  };
+// const styles = {
+//   root: {
+//   width: "100%",
+//   overflowX: "auto"
+//   },
+//   table: {
+//   minWidth: 1080
+//   }
+//   };
  
-const customers = [{
-  'id' : '1',
-  'image': process.env.PUBLIC_URL + '/idis7.jpg',
-  // 'image': 'https://picsum.photos/250',
-  'name' : '이진석',
-  'birthday' : '691208',
-  'gender' : '남자',
-  'job' : '대학생'
-},
 
-{
-  'id' : '2',
-  'image': process.env.PUBLIC_URL + '/idis8.jpg',
-  'name' : '나진석',
-  'birthday' : '991208',
-  'gender' : '남자',
-  'job' : '중학생'
-},
+// function App() {
 
-{
-  'id' : '3',
-  'image': process.env.PUBLIC_URL + '/idis6.jpg',
-  'name' : '다진석',
-  'birthday' : '791208',
-  'gender' : '남자',
-  'job' : '회사원'
-},
+class App extends Component {
+  state = {
+    customers: ""
+  }
 
-]
-
-
-function App() {
+//비동기적으로 처리됨
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ customers: res }))
+      .catch(err => console.log(err));
+  }
   
+
+  callApi = async () => {
+    const response = await fetch('/api/customers');
+    const body = await response.json();
+    console.log("api 호출 ",body);
+    return body;
+  }
+  
+  render(){
   return (
     <Paper>
       <Table >
@@ -69,7 +60,7 @@ function App() {
             
         </TableHead>
       <TableBody>
-      {customers.map(c => {
+      {this.state.customers ? this.state.customers.map(c => {
           return (
             <Customer
               key={c.id}
@@ -81,15 +72,15 @@ function App() {
               job={c.job}>
             </Customer>
           )
-        })
-      }
+        }): "" }
       </TableBody>
       </Table>
       
   </Paper>
-
   );
+}  
 }
+
 
 export default App;
 // export default withStyles(styles)(App);
