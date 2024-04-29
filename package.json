@@ -1,19 +1,17 @@
 {
     "name": "management",
     "version": "1.0.0.0",
-    "scripts":{
-        "client":"cd client && npm start",
+    "scripts": {
+        "client": "cd client && npm start",
         "server": "nodemon server.js",
         "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\""
     },
-     
     "dependencies": {
         "body-parser": "^1.18.3",
-        "express": "^4.16.4"
-         
+        "express": "^4.16.4",
+        "mysql": "^2.18.1"
     },
     "devDependencies": {
         "concurrently": "^4.0.1"
     }
-    
 }
